@@ -1,0 +1,22 @@
+.pagination {
+  ul {
+    display: inline-flex;
+    box-sizing: border-box;
+  }
+  li {
+    cursor: pointer;
+    padding: 8px 14px;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 30%);
+    border-radius: 30%;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    &:hover {
+      background-color: #f9f9f9;
+    }
+    &.active {
+      color: #fff;
+      background-color: #9d84cc;
+    }
+  }
+}

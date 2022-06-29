@@ -1,0 +1,30 @@
+@import './variables';
+@import './normalize';
+
+.wrapper {
+  height: 100%;
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.categories__btn-clear {
+  background-color: #f9f9f9;
+  padding: 13px 30px;
+  border-radius: 30px;
+  border-width: 0px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  margin: 0px 12px 4px 0px;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+  &:hover {
+    background-color: darken(#f9f9f9, 2%);
+  }
+
+  &:active,
+  &:focus {
+    background-color: #282828;
+    color: #fff;
+  }
+}
