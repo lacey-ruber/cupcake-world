@@ -4,6 +4,8 @@ import CupcakeBlock from '../components/CupcakeBlock'
 import Pagination from '../components/common/Pagination'
 import { paginate } from '../utils/paginate'
 import Categories from '../components/common/Categories'
+import Sort from '../components/Sort'
+import _ from 'lodash'
 import '../scss/components/_cupcake-block.scss'
 import '../scss/app.scss'
 
@@ -11,6 +13,9 @@ const Home = () => {
   const [cupcakes, setCupcakes] = useState(api.cupcakes.fetchAll())
   const [categories, setCategories] = useState()
   const [selectedCategories, setSelectedCategories] = useState()
+  const [sortBy, setSortBy] = useState({ path: 'name', order: 'asc' })
+
+  console.log(sortBy)
 
   useEffect(() => {
     api.categories.fetchAll().then((data) => setCategories(data))
@@ -28,12 +33,25 @@ const Home = () => {
     setSelectedCategories(item)
   }
 
-  const pageSize = 3
+  const handleSort = (item) => {
+    setSortBy(item)
+  }
+
+  const pageSize = 6
   const filteredCupcakes = selectedCategories
-    ? cupcakes.filter((cupcake) => cupcake.category === selectedCategories)
+    ? cupcakes.filter(
+        (cupcake) =>
+          JSON.stringify(cupcake.category) ===
+          JSON.stringify(selectedCategories)
+      )
     : cupcakes
   const count = filteredCupcakes.length
-  const cupcakeCrop = paginate(filteredCupcakes, currentPage, pageSize)
+  const sortedCupcakes = _.orderBy(
+    filteredCupcakes,
+    [sortBy.path],
+    [sortBy.order]
+  )
+  const cupcakeCrop = paginate(sortedCupcakes, currentPage, pageSize)
 
   const clearFilter = () => {
     setSelectedCategories()
@@ -41,7 +59,7 @@ const Home = () => {
 
   return (
     <section className='goods'>
-      {/* <Sort selectedSort={sortBy} onSort={handleSort} /> */}
+      <Sort onSort={handleSort} selectedSort={sortBy} />
       <div className='categories'>
         <div className='categories__wrapper wrapper'>
           {categories && (

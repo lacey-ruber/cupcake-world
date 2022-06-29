@@ -3,45 +3,48 @@ import React from 'react'
 import '../scss/components/_sort.scss'
 
 const Sort = ({ onSort, selectedSort }) => {
-  const items = [
-    { name: 'Популярности', sortProperty: 'rating' },
-    { name: 'Цене', sortProperty: 'price' },
-    { name: 'Алфавиту', sortProperty: 'title' },
-  ]
+  const items = {
+    rating: { path: 'rating', name: 'Популярности' },
+    price: { path: 'price', name: 'Цене' },
+    title: { path: 'title', name: 'Алфавиту' },
+  }
   const handleSort = (item) => {
-    if (selectedSort.iter === item) {
+    if (selectedSort.path === item) {
       onSort({
         ...selectedSort,
         order: selectedSort.order === 'asc' ? 'desc' : 'asc',
       })
     } else {
-      onSort({ iter: item, order: 'asc' })
+      onSort({ path: item, order: 'asc' })
     }
   }
+
   const renderSortArrow = (selectedSort, currentPath) => {
-    if (selectedSort.iter === currentPath) {
+    if (selectedSort.path === currentPath) {
       if (selectedSort.order === 'asc') {
-        return <span>↑</span>
+        return <i>↓</i>
       } else {
-        return <span>↓</span>
+        return <i>↑</i>
       }
     }
+    return null
   }
+
   return (
     <div className='sort'>
       <div className='wrapper'>
         <div className='sort__label'>
           <b>Сортировать по:</b>
-          {items.map((item, id) => (
+          {Object.keys(items).map((item) => (
             <span
-              key={id}
-              onClick={() => handleSort(item.sortProperty)}
-              className={item.name === onSort.iter ? 'active' : ''}
+              key={item}
+              className={selectedSort.path === items[item].path ? 'active' : ''}
+              onClick={() => handleSort(items[item].path)}
             >
-              {item.name}
+              {items[item].name}
+              {renderSortArrow(selectedSort, items[item].path)}
             </span>
-          ))}{' '}
-          {renderSortArrow(selectedSort, onSort.order)}
+          ))}
         </div>
       </div>
     </div>
