@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import api from '../api'
-import CupcakeBlock from '../components/CupcakeBlock'
-import Pagination from '../components/common/Pagination'
+import Cupcake from './Cupcake'
+import Sort from './Sort'
+import Categories from './common/Categories'
+import Pagination from './common/Pagination'
 import { paginate } from '../utils/paginate'
-import Categories from '../components/common/Categories'
-import Sort from '../components/Sort'
 import _ from 'lodash'
+
 import '../scss/components/_cupcake-block.scss'
 import '../scss/app.scss'
 
-const Home = () => {
+const CupcakesList = () => {
   const [cupcakes, setCupcakes] = useState(api.cupcakes.fetchAll())
+  const [sortBy, setSortBy] = useState({ path: 'name', order: 'asc' })
   const [categories, setCategories] = useState()
   const [selectedCategories, setSelectedCategories] = useState()
-  const [sortBy, setSortBy] = useState({ path: 'name', order: 'asc' })
-
-  console.log(sortBy)
+  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     api.categories.fetchAll().then((data) => setCategories(data))
@@ -23,16 +23,13 @@ const Home = () => {
   useEffect(() => {
     setCurrentPage(1)
   }, [selectedCategories])
-  const [currentPage, setCurrentPage] = useState(1)
 
   const handlePageChange = (pageIndex) => {
     setCurrentPage(pageIndex)
   }
-
   const handleCategoriesSelect = (item) => {
     setSelectedCategories(item)
   }
-
   const handleSort = (item) => {
     setSortBy(item)
   }
@@ -61,7 +58,7 @@ const Home = () => {
     <section className='goods'>
       <Sort onSort={handleSort} selectedSort={sortBy} />
       <div className='categories'>
-        <div className='categories__wrapper wrapper'>
+        <div className='categories__wrapper'>
           {categories && (
             <>
               <button className='categories__btn-clear' onClick={clearFilter}>
@@ -76,9 +73,7 @@ const Home = () => {
           )}
         </div>
       </div>
-      {cupcakes && (
-        <CupcakeBlock cupcakes={cupcakes} cupcakeCrop={cupcakeCrop} />
-      )}
+      {cupcakes && <Cupcake cupcakes={cupcakes} cupcakeCrop={cupcakeCrop} />}
       <Pagination
         itemsCount={count}
         pageSize={pageSize}
@@ -89,4 +84,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default CupcakesList

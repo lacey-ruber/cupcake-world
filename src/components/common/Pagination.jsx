@@ -12,19 +12,17 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
 
   return (
     <div className='pagination'>
-      <div className='wrapper'>
-        <ul>
-          {pages.map((page) => (
-            <li
-              className={page === currentPage ? 'active' : null}
-              key={'page_' + page}
-              onClick={() => onPageChange(page)}
-            >
-              {page}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul>
+        {pages.map((page) => (
+          <li
+            className={page === currentPage ? 'active' : null}
+            key={'page_' + page}
+            onClick={() => onPageChange(page)}
+          >
+            {page}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

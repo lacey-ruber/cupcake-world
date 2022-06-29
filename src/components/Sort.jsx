@@ -32,20 +32,18 @@ const Sort = ({ onSort, selectedSort }) => {
 
   return (
     <div className='sort'>
-      <div className='wrapper'>
-        <div className='sort__label'>
-          <b>Сортировать по:</b>
-          {Object.keys(items).map((item) => (
-            <span
-              key={item}
-              className={selectedSort.path === items[item].path ? 'active' : ''}
-              onClick={() => handleSort(items[item].path)}
-            >
-              {items[item].name}
-              {renderSortArrow(selectedSort, items[item].path)}
-            </span>
-          ))}
-        </div>
+      <div className='sort__label'>
+        <b>Сортировать по:</b>
+        {Object.keys(items).map((item) => (
+          <span
+            key={item}
+            className={selectedSort.path === items[item].path ? 'active' : ''}
+            onClick={() => handleSort(items[item].path)}
+          >
+            {items[item].name}
+            {renderSortArrow(selectedSort, items[item].path)}
+          </span>
+        ))}
       </div>
     </div>
   )
