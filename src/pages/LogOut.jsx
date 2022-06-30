@@ -11,21 +11,25 @@ const LogOut = () => {
           <div className='logout__item'>
             <label htmlFor='email'>Электронная почта</label>
             <div className='logout__item-input'>
-              <input type='text' />
+              <input type='text' id='email' placeholder='Введите email' />
               <span>Электронная почта обязательна для заполнения</span>
             </div>
           </div>
           <div className='logout__item'>
-            <label htmlFor='email'>Имя</label>
+            <label htmlFor='name'>Имя</label>
             <div className='logout__item-input'>
-              <input type='text' />
+              <input type='text' id='name' placeholder='Укажите имя' />
               <span>Имя обязательно для заполнения</span>
             </div>
           </div>
           <div className='logout__item'>
-            <label htmlFor='email'>Пароль</label>
+            <label htmlFor='password'>Пароль</label>
             <div className='logout__item-input'>
-              <input type='text' />
+              <input
+                type='password'
+                id='password'
+                placeholder='Задайте пароль'
+              />
               <button type='button'>
                 <i></i>
               </button>

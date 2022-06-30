@@ -38,7 +38,7 @@ const CupcakesList = () => {
     setSortBy(item)
   }
 
-  const pageSize = 6
+  const pageSize = 3
   const filteredCupcakes = selectedCategories
     ? cupcakes.filter(
         (cupcake) =>
