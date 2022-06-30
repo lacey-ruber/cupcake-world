@@ -2,10 +2,13 @@
 @import './normalize';
 
 .wrapper {
-  height: 100%;
   background-color: #fff;
   margin: 0 auto;
   max-width: 1400px;
+}
+
+.content {
+  margin-top: 80px;
 }
 
 .categories__btn-clear {

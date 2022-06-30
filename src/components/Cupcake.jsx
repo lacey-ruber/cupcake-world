@@ -12,7 +12,7 @@ const Cupcake = ({ cupcakeCrop, cupcakes }) => {
             className='cupcake-card'
             key={cupcake._id}
           >
-            <img className='cupcake-card__image' src={cupcake1} />
+            <img className='cupcake-card__image' src={cupcake1} alt='Cupcake' />
             <div className='cupcake-card__title'>{cupcake.title}</div>
             <div className='cupcake-card__price'>{cupcake.price} ₽</div>
             <div className='cupcake-card__order'>Заказать</div>

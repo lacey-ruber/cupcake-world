@@ -1,45 +1,48 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import '../scss/components/_logout.scss'
 
 const LogOut = () => {
   return (
     <div className='logout'>
-      <div className='logout__wrapper wrapper'>
+      <div className='logout__wrapper'>
         <h1 className='logout__title'>Зарегистрироваться</h1>
         <form className='logout__form' action=''>
           <div className='logout__item'>
             <label htmlFor='email'>Электронная почта</label>
-            <div>
+            <div className='logout__item-input'>
               <input type='text' />
-              <div>Электронная почта обязательна для заполнения</div>
+              <span>Электронная почта обязательна для заполнения</span>
             </div>
           </div>
           <div className='logout__item'>
             <label htmlFor='email'>Имя</label>
-            <div>
+            <div className='logout__item-input'>
               <input type='text' />
-              <div>Имя обязательно для заполнения</div>
+              <span>Имя обязательно для заполнения</span>
             </div>
           </div>
           <div className='logout__item'>
             <label htmlFor='email'>Пароль</label>
-            <div>
+            <div className='logout__item-input'>
               <input type='text' />
               <button type='button'>
                 <i></i>
               </button>
-              <div>Пароль обязателен для заполнения</div>
+              <span>Пароль обязателен для заполнения</span>
             </div>
           </div>
-          <div>
-            <input type='text' />
-            <label htmlFor=''></label>
+          <div className='logout__item-checkbox'>
+            <input type='checkbox' />
+            <label>Я принимаю условия пользовательского соглашения</label>
           </div>
-          <button type='submit'>Отправить</button>
+          <button className='logout__item-btn' type='submit'>
+            Зарегистрироваться
+          </button>
         </form>
-        <p>
+        <p className='logout__text-help'>
           У вас уже есть аккаунт?
-          <Link to='/login' role='button'>
+          <Link className='logout__text-login' to='/login' role='button'>
             Войти
           </Link>
         </p>

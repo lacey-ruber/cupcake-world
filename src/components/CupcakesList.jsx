@@ -11,11 +11,15 @@ import '../scss/components/_cupcake-block.scss'
 import '../scss/app.scss'
 
 const CupcakesList = () => {
-  const [cupcakes, setCupcakes] = useState(api.cupcakes.fetchAll())
+  const [cupcakes, setCupcakes] = useState()
   const [sortBy, setSortBy] = useState({ path: 'name', order: 'asc' })
   const [categories, setCategories] = useState()
   const [selectedCategories, setSelectedCategories] = useState()
   const [currentPage, setCurrentPage] = useState(1)
+
+  useEffect(() => {
+    api.cupcakes.fetchAll().then((data) => setCupcakes(data))
+  }, [])
 
   useEffect(() => {
     api.categories.fetchAll().then((data) => setCategories(data))
@@ -42,7 +46,7 @@ const CupcakesList = () => {
           JSON.stringify(selectedCategories)
       )
     : cupcakes
-  const count = filteredCupcakes.length
+  const count = cupcakes ? filteredCupcakes.length : undefined
   const sortedCupcakes = _.orderBy(
     filteredCupcakes,
     [sortBy.path],
@@ -53,35 +57,37 @@ const CupcakesList = () => {
   const clearFilter = () => {
     setSelectedCategories()
   }
-
-  return (
-    <section className='goods'>
-      <Sort onSort={handleSort} selectedSort={sortBy} />
-      <div className='categories'>
-        <div className='categories__wrapper'>
-          {categories && (
-            <>
-              <button className='categories__btn-clear' onClick={clearFilter}>
-                Все
-              </button>
-              <Categories
-                items={categories}
-                onItemSelect={handleCategoriesSelect}
-                selectedItem={selectedCategories}
-              />
-            </>
-          )}
+  if (cupcakes) {
+    return (
+      <section className='goods'>
+        {<Sort onSort={handleSort} selectedSort={sortBy} />}
+        <div className='categories'>
+          <div className='categories__wrapper'>
+            {categories && (
+              <>
+                <button className='categories__btn-clear' onClick={clearFilter}>
+                  Все
+                </button>
+                <Categories
+                  items={categories}
+                  onItemSelect={handleCategoriesSelect}
+                  selectedItem={selectedCategories}
+                />
+              </>
+            )}
+          </div>
         </div>
-      </div>
-      {cupcakes && <Cupcake cupcakes={cupcakes} cupcakeCrop={cupcakeCrop} />}
-      <Pagination
-        itemsCount={count}
-        pageSize={pageSize}
-        currentPage={currentPage}
-        onPageChange={handlePageChange}
-      />
-    </section>
-  )
+        <Cupcake cupcakes={cupcakes} cupcakeCrop={cupcakeCrop} />
+
+        <Pagination
+          itemsCount={count}
+          pageSize={pageSize}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
+      </section>
+    )
+  }
 }
 
 export default CupcakesList

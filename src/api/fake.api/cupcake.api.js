@@ -59,6 +59,21 @@ const cupcakes = [
   },
 ]
 
-export function fetchAll() {
-  return cupcakes
+const fetchAll = () =>
+  new Promise((resolve) => {
+    window.setTimeout(function () {
+      resolve(cupcakes)
+    }, 1000)
+  })
+
+const getById = (id) =>
+  new Promise((resolve) => {
+    window.setTimeout(function () {
+      resolve(cupcakes.find((cupcake) => cupcake._id === id))
+    })
+  })
+
+export default {
+  fetchAll,
+  getById,
 }

@@ -4,7 +4,9 @@ import CupcakePage from './CupcakePage'
 import CupcakesList from '../components/CupcakesList'
 
 const Catalog = () => {
-  const { productId } = useParams()
+  const params = useParams()
+  const { productId } = params
+
   return (
     <>{productId ? <CupcakePage productId={productId} /> : <CupcakesList />}</>
   )
