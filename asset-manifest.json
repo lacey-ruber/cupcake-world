@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/cupcake-world/static/css/main.84090ecb.css",
-    "main.js": "/cupcake-world/static/js/main.77fcfc22.js",
+    "main.css": "/cupcake-world/static/css/main.c4737d87.css",
+    "main.js": "/cupcake-world/static/js/main.d2a77756.js",
     "static/media/mr-cupcake.png": "/cupcake-world/static/media/mr-cupcake.360f4e7cb25e1863cbb4.png",
     "index.html": "/cupcake-world/index.html",
-    "main.84090ecb.css.map": "/cupcake-world/static/css/main.84090ecb.css.map",
-    "main.77fcfc22.js.map": "/cupcake-world/static/js/main.77fcfc22.js.map"
+    "main.c4737d87.css.map": "/cupcake-world/static/css/main.c4737d87.css.map",
+    "main.d2a77756.js.map": "/cupcake-world/static/js/main.d2a77756.js.map"
   },
   "entrypoints": [
-    "static/css/main.84090ecb.css",
-    "static/js/main.77fcfc22.js"
+    "static/css/main.c4737d87.css",
+    "static/js/main.d2a77756.js"
   ]
 }
