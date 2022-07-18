@@ -5,6 +5,7 @@ import Cart from './pages/Cart'
 import Login from './pages/Login'
 import LogOut from './pages/LogOut'
 import Catalog from './pages/Catalog'
+import Layout from './pages/Layout'
 
 import './scss/app.scss'
 import NotFound from './pages/NotFound'
@@ -14,8 +15,9 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<MainPage />}>
-          <Route index element={<Catalog />} />
+        <Route path='/' element={<Layout />}>
+          <Route path='/' element={<MainPage />} />
+          <Route path='catalog' element={<Catalog />} />
           <Route path='login' element={<Login />} />
           <Route path='logout' element={<LogOut />} />
           <Route path='cart' element={<Cart />} />

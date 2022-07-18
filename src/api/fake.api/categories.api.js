@@ -17,7 +17,7 @@ const fetchAll = () =>
   new Promise((resolve) => {
     window.setTimeout(function () {
       resolve(categories)
-    }, 1000)
+    })
   })
 
 export default {

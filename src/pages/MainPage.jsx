@@ -1,15 +1,12 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
-import NavBar from '../components/NavBar'
+import { Link } from 'react-router-dom'
+import '../scss/components/_main-page.scss'
 
 const MainPage = () => {
   return (
-    <>
-      <NavBar />
-      <div className='wrapper'>
-        <Outlet />
-      </div>
-    </>
+    <div className='main-page'>
+      <Link to='/catalog'>Начать сладкую жизнь</Link>
+    </div>
   )
 }
 

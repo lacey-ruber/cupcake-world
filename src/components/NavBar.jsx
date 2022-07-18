@@ -14,7 +14,7 @@ const NavBar = () => {
             <div className='menu-burger'></div>
           </div>
           <div className='header__logo'>
-            <Link to='/'>
+            <Link to='/catalog'>
               <img src={logo} alt='Logo' />
               <div className='header__logo-text'>
                 <p>Cupcake world</p>

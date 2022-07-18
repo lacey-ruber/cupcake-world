@@ -1,15 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import '../scss/components/_cart.scss'
+
 const Cart = () => {
   return (
     <div className='cart'>
       <div className='cart__wrapper wrapper'>
-        <Link to='/' className='cart__back'>
-          Назад
-        </Link>
-        <div>
+        <div className='cart__top'>
+          <Link to='/' className='cart__back'>
+            Назад
+          </Link>
           <h1 className='cart__title'>Корзина</h1>
+        </div>
+        <ul className='cart__list'>
           <div className='cart__clear'>
             <svg width='20' height='20' viewBox='0 0 20 20' fill='none'>
               <path
@@ -43,8 +47,6 @@ const Cart = () => {
             </svg>
             <span>Очистить всё</span>
           </div>
-        </div>
-        <ul className='cart__list'>
           <li className='cart__item'>
             <img className='cart__item-image' src='#' alt='' />
             <div className='cart__item-name'>Товар</div>
@@ -54,9 +56,7 @@ const Cart = () => {
               <div className='cart__item-number__btn'>-</div>
             </div>
             <div className='cart__item-price'>100 ₽</div>
-            <div className='cart__item-delete'>
-              <img src='#' alt='' />
-            </div>
+            <div className='cart__item-delete'>x</div>
           </li>
         </ul>
         <div className='cart__detalis'>

@@ -63,7 +63,7 @@ const fetchAll = () =>
   new Promise((resolve) => {
     window.setTimeout(function () {
       resolve(cupcakes)
-    }, 1000)
+    })
   })
 
 const getById = (id) =>
