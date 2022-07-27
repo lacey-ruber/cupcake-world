@@ -1,9 +1,4 @@
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
   max-height: 80px;
   &__wrapper {
     display: flex;
@@ -13,7 +8,6 @@
   &__controls {
     display: flex;
     align-items: center;
-    // justify-content: space-between;
     &-right {
     }
   }
@@ -67,6 +61,33 @@
   }
   &-cart-button {
     cursor: pointer;
+    position: relative;
+  }
+  &-cart-icon {
+    position: relative;
+    svg {
+      path {
+        stroke: black;
+      }
+      rect {
+        stroke: black;
+      }
+    }
+  }
+  &-cart-circle {
+    background-color: #232323;
+    min-width: 12px;
+    min-height: 12px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 1px 4px;
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: 450;
+    color: white;
+    position: absolute;
+    right: -10px;
+    top: -2px;
   }
 }
 

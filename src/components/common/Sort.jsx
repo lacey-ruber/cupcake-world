@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../scss/components/_sort.scss'
+import '../../scss/components/_sort.scss'
 
 const Sort = ({ onSort, selectedSort }) => {
   const items = {

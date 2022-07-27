@@ -59,21 +59,39 @@ const cupcakes = [
   },
 ]
 
+if (!localStorage.getItem('cupcakes')) {
+  localStorage.setItem('cupcakes', JSON.stringify(cupcakes))
+}
+
 const fetchAll = () =>
   new Promise((resolve) => {
     window.setTimeout(function () {
-      resolve(cupcakes)
-    })
+      resolve(JSON.parse(localStorage.getItem('cupcakes')))
+    }, 2000)
+  })
+
+const update = (id, data) =>
+  new Promise((resolve) => {
+    const cupcakes = JSON.parse(localStorage.getItem('cupcakes'))
+    const cupcakeIndex = cupcakes.findIndex((u) => u._id === id)
+    cupcakes[cupcakeIndex] = { ...cupcakes[cupcakeIndex], ...data }
+    localStorage.setItem('cupcakes', JSON.stringify(cupcakes))
+    resolve(cupcakes[cupcakeIndex])
   })
 
 const getById = (id) =>
   new Promise((resolve) => {
     window.setTimeout(function () {
-      resolve(cupcakes.find((cupcake) => cupcake._id === id))
-    })
+      resolve(
+        JSON.parse(localStorage.getItem('cupcakes')).find(
+          (cupcake) => cupcake._id === id
+        )
+      )
+    }, 1000)
   })
 
 export default {
   fetchAll,
   getById,
+  update,
 }

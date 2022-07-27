@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from 'react'
-import api from '../api'
-import Cupcake from './Cupcake'
-import Sort from './Sort'
-import Categories from './common/Categories'
-import Pagination from './common/Pagination'
-import { paginate } from '../utils/paginate'
 import _ from 'lodash'
+import api from '../../api'
+import CupcakeCard from '../ui/CupcakeCard'
+import Sort from '../common/Sort'
+import Categories from '../common/Categories'
+import Pagination from '../common/Pagination'
+import { paginate } from '../../utils/paginate'
+import '../../scss/components/_cupcake-block.scss'
+import '../../scss/app.scss'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  setSortBy,
+  setSelectedCategories,
+  setCurrentPage,
+} from '../../store/slices/filterSlice'
 
-import '../scss/components/_cupcake-block.scss'
-import '../scss/app.scss'
+const CupcakesListPage = () => {
+  const dispatch = useDispatch()
+  const { sortBy, selectedCategories, currentPage } = useSelector(
+    (state) => state.filter
+  )
 
-const CupcakesList = () => {
   const [cupcakes, setCupcakes] = useState()
-  const [sortBy, setSortBy] = useState({ path: 'name', order: 'asc' })
   const [categories, setCategories] = useState()
-  const [selectedCategories, setSelectedCategories] = useState()
-  const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     api.cupcakes.fetchAll().then((data) => setCupcakes(data))
@@ -24,18 +31,19 @@ const CupcakesList = () => {
   useEffect(() => {
     api.categories.fetchAll().then((data) => setCategories(data))
   }, [])
+
   useEffect(() => {
     setCurrentPage(1)
   }, [selectedCategories])
 
   const handlePageChange = (pageIndex) => {
-    setCurrentPage(pageIndex)
+    dispatch(setCurrentPage(pageIndex))
   }
   const handleCategoriesSelect = (item) => {
-    setSelectedCategories(item)
+    dispatch(setSelectedCategories(item))
   }
   const handleSort = (item) => {
-    setSortBy(item)
+    dispatch(setSortBy(item))
   }
 
   const pageSize = 6
@@ -55,12 +63,13 @@ const CupcakesList = () => {
   const cupcakeCrop = paginate(sortedCupcakes, currentPage, pageSize)
 
   const clearFilter = () => {
-    setSelectedCategories()
+    dispatch(setSelectedCategories())
   }
+
   if (cupcakes) {
     return (
       <section className='goods'>
-        {<Sort onSort={handleSort} selectedSort={sortBy} />}
+        <Sort onSort={handleSort} selectedSort={sortBy} />
         <div className='categories'>
           <div className='categories__wrapper'>
             {categories && (
@@ -77,8 +86,7 @@ const CupcakesList = () => {
             )}
           </div>
         </div>
-        <Cupcake cupcakes={cupcakes} cupcakeCrop={cupcakeCrop} />
-
+        {cupcakes && <CupcakeCard cupcakeCrop={cupcakeCrop} />}
         <Pagination
           itemsCount={count}
           pageSize={pageSize}
@@ -87,7 +95,9 @@ const CupcakesList = () => {
         />
       </section>
     )
+  } else {
+    return <h2>Загрузка</h2>
   }
 }
 
-export default CupcakesList
+export default CupcakesListPage

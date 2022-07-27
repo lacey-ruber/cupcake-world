@@ -2,7 +2,6 @@
   "name": "cupcake-world",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lacey-ruber.github.io/cupcake-world/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",

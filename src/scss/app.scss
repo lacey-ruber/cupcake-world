@@ -31,3 +31,18 @@
     color: #fff;
   }
 }
+
+.checkbox {
+  margin-bottom: 10px;
+
+  &__container {
+    input {
+      margin-right: 5px;
+    }
+  }
+  span {
+    margin-top: 5px;
+    font-size: 12px;
+    color: red;
+  }
+}

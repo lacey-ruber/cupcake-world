@@ -1,7 +1,8 @@
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { StrictMode } from 'react'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { store } from './store'
 
 const rootElem = document.getElementById('root')
 
@@ -9,10 +10,10 @@ if (rootElem) {
   const root = ReactDOM.createRoot(rootElem)
 
   root.render(
-    <BrowserRouter>
-      <StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
         <App />
-      </StrictMode>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   )
 }
