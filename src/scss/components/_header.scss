@@ -42,17 +42,19 @@
   }
   &__search {
     position: relative;
+    margin: 20px 0px;
     input {
-      margin: 0 20px;
+      // margin: 0 20px;
       padding: 8px 40px;
       font-size: 14px;
       border-radius: 60px;
       border-color: #d7c7b4;
+      width: 360px;
     }
     &-icon {
       position: absolute;
-      top: 24%;
-      left: 12%;
+      left: 15px;
+      top: 10px;
     }
   }
   &-auth-button {

@@ -24,21 +24,7 @@ const NavBar = () => {
             </Link>
             <p></p>
           </div>
-          <div className='header__search'>
-            <input type='text' placeholder='Введите название кекса' />
-            <svg
-              className='header__search-icon'
-              width='19'
-              height='15'
-              viewBox='0 0 19 18'
-              fill='none'
-            >
-              <path
-                d='M13.2406 12.7955L17.8753 17.4302M15.637 8.17399C15.637 12.1237 12.4352 15.3255 8.48552 15.3255C4.53583 15.3255 1.33398 12.1237 1.33398 8.17399C1.33398 4.22431 4.53583 1.02246 8.48552 1.02246C12.4352 1.02246 15.637 4.22431 15.637 8.17399Z'
-                stroke='gray'
-              ></path>
-            </svg>
-          </div>
+          {/* <Search /> */}
         </div>
         <div className='header__controls header__controls-right'>
           <Link to='login' className='header-auth-button'>
