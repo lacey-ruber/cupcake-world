@@ -8,12 +8,7 @@ const Cart = () => {
     <div className='cart'>
       <div className='cart__wrapper wrapper'>
         <div className='cart__top'>
-          <Link to='/' className='cart__back'>
-            Назад
-          </Link>
-          <h1 className='cart__title'>Корзина</h1>
-        </div>
-        <ul className='cart__list'>
+          <h2 className='cart__title'>Корзина</h2>
           <div className='cart__clear'>
             <svg width='20' height='20' viewBox='0 0 20 20' fill='none'>
               <path
@@ -47,25 +42,57 @@ const Cart = () => {
             </svg>
             <span>Очистить всё</span>
           </div>
+        </div>
+        <ul className='cart__items'>
           <li className='cart__item'>
-            <img className='cart__item-image' src='#' alt='' />
-            <div className='cart__item-name'>Товар</div>
-            <div className='cart__item-number'>
-              <div className='cart__item-number__btn'>+</div>
-              <span className='cart__item-number__value'>10</span>
-              <div className='cart__item-number__btn'>-</div>
+            <div className='cart__item-img'>
+              <img alt='Cupcake' />
             </div>
-            <div className='cart__item-price'>100 ₽</div>
-            <div className='cart__item-delete'>x</div>
+            <div className='cart__item-info'>
+              <h3>Барсик</h3>
+              <p>самый сладкий</p>
+            </div>
+            <div className='cart__item-count'>
+              <button className='button-circle' disabled=''>
+                -
+              </button>
+              <b>1</b>
+              <button className='button-circle'>+</button>
+            </div>
+            <div className='cart__item-price'>
+              <b>450 ₽</b>
+            </div>
+            <div className='cart__item-remove'>
+              <div className='button-circle'>x</div>
+            </div>
           </li>
         </ul>
-        <div className='cart__detalis'>
-          <span>
-            Всего кексов <b>10 штук</b>
-          </span>
-          <span>
-            Итого: <b>1000 ₽</b>
-          </span>
+        <div className='cart__bottom'>
+          <div className='cart__bottom-details'>
+            <span>
+              Всего кексов: <b>6 шт.</b>
+            </span>
+            <span>
+              Итого: <b className='cart__bottom-details_price'>2725 ₽</b>
+            </span>
+          </div>
+          <div className='cart__bottom-buttons'>
+            <Link to='/'>
+              <svg width='8' height='14' viewBox='0 0 8 14' fill='none'>
+                <path
+                  d='M7 13L1 6.93015L6.86175 1'
+                  stroke='#D3D3D3'
+                  strokeWidth='1.5'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                ></path>
+              </svg>
+              <span>Вернуться к покупкам</span>
+            </Link>
+            <div className='pay-btn'>
+              <span>Оформить заказ</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

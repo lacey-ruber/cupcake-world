@@ -27,7 +27,6 @@ const CupcakesListPage = () => {
 
   const [cupcakes, setCupcakes] = useState()
   const [categories, setCategories] = useState()
-  // const [searchQuery, setSearchQuery] = useState('')
 
   // axios.get('').then(response => {
   //   setCupcakes(response.data)

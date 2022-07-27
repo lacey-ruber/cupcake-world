@@ -8,15 +8,30 @@ const Categories = ({
   valueProperty,
   contentProperty,
 }) => {
+  if (!Array.isArray(items)) {
+    return (
+      <ul>
+        {Object.keys(items).map((item) => (
+          <li
+            key={items[item][valueProperty]}
+            className={items[item] === selectedItem ? 'active' : ''}
+            onClick={() => onItemSelect(items[item])}
+          >
+            {items[item][contentProperty]}
+          </li>
+        ))}
+      </ul>
+    )
+  }
   return (
     <ul>
-      {Object.keys(items).map((item) => (
+      {items.map((item) => (
         <li
-          key={items[item][valueProperty]}
-          className={items[item] === selectedItem ? 'active' : ''}
-          onClick={() => onItemSelect(items[item])}
+          key={item[valueProperty]}
+          className={item === selectedItem ? 'active' : ''}
+          onClick={() => onItemSelect(item)}
         >
-          {items[item][contentProperty]}
+          {item[contentProperty]}
         </li>
       ))}
     </ul>

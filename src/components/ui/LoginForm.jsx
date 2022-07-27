@@ -60,7 +60,7 @@ const LoginForm = () => {
   return (
     <div className='forms'>
       <div className='forms__wrapper'>
-        <h1 className='forms__title'>Ввойти в систему</h1>
+        <h1 className='forms__title'>Войти в систему</h1>
         <form onSubmit={handleSubmit} className='forms__form'>
           <TextField
             label='Электронная почта'

@@ -6,7 +6,6 @@ import LogOut from './layouts/LogOut'
 import Catalog from './layouts/Catalog'
 import Layout from './layouts/Layout'
 import NotFound from './layouts/NotFound'
-import ProductPage from './components/page/ProductPage'
 import './scss/app.scss'
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
           <Route path='login' element={<Login />} />
           <Route path='logout' element={<LogOut />} />
           <Route path='cart' element={<Cart />} />
-          <Route path='catalog/:productId' element={<ProductPage />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
