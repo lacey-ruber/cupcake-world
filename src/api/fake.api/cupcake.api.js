@@ -3,7 +3,7 @@ import { categories } from './categories.api'
 const cupcakes = [
   {
     _id: 'a354c76b391b4d80946cf077c9e57791',
-    title: 'Клубничка',
+    title: 'Кекс Клубничка',
     price: 395,
     category: categories.traditional,
     rating: 4,
@@ -17,7 +17,7 @@ const cupcakes = [
   },
   {
     _id: '930cbf874a7b403cbf28913e33d31160',
-    title: 'Ванильная няша',
+    title: 'Маффин ванильный',
     price: 290,
     category: categories.other,
     rating: 6,
@@ -38,14 +38,14 @@ const cupcakes = [
   },
   {
     _id: 'f4e74db042a74e83b8a76f19bf16667f',
-    title: 'Бутерброд с вишенкой',
+    title: 'Рулет Сдобная особа',
     price: 450,
     category: categories.other,
     rating: 1,
   },
   {
     _id: 'fa5d24b1a23f4da68e6cebdcec14b0c9',
-    title: 'Шоколадница',
+    title: 'Кекс Шоколадница',
     price: 290,
     category: categories.traditional,
     rating: 3,
@@ -70,15 +70,6 @@ const fetchAll = () =>
     }, 2000)
   })
 
-const update = (id, data) =>
-  new Promise((resolve) => {
-    const cupcakes = JSON.parse(localStorage.getItem('cupcakes'))
-    const cupcakeIndex = cupcakes.findIndex((u) => u._id === id)
-    cupcakes[cupcakeIndex] = { ...cupcakes[cupcakeIndex], ...data }
-    localStorage.setItem('cupcakes', JSON.stringify(cupcakes))
-    resolve(cupcakes[cupcakeIndex])
-  })
-
 const getById = (id) =>
   new Promise((resolve) => {
     window.setTimeout(function () {
@@ -93,5 +84,4 @@ const getById = (id) =>
 export default {
   fetchAll,
   getById,
-  update,
 }

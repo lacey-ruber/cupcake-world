@@ -1,5 +1,6 @@
 import React from 'react'
-import cupcake2 from '../../assets/img/mr-cupcake-2.png'
+import PropTypes from 'prop-types'
+import cupcake from '../../assets/img/mr-cupcake-8.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { addProduct } from '../../store/slices/cartSlice'
 
@@ -20,15 +21,21 @@ const CupcakeCard = ({ id, title, price }) => {
   }
 
   return (
-    <a className='cupcake-card' key={id}>
-      <img className='cupcake-card__image' src={cupcake2} alt='Cupcake' />
+    <div className='cupcake-card' key={id}>
+      <img className='cupcake-card__image' src={cupcake} alt='Cupcake' />
       <div className='cupcake-card__title'>{title}</div>
       <div className='cupcake-card__price'>{price} ₽</div>
       <div className='cupcake-card__order' onClick={handleAddProduct}>
         Добавить в корзину {addedCount > 0 && <span>{addedCount}</span>}
       </div>
-    </a>
+    </div>
   )
+}
+
+CupcakeCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 }
 
 export default CupcakeCard

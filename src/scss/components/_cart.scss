@@ -74,6 +74,7 @@
         font-weight: 700;
         letter-spacing: 0.01em;
         line-height: 37px;
+        padding: 0 8px;
       }
       p {
         color: #8d8d8d;
@@ -84,7 +85,6 @@
       align-items: center;
       display: flex;
       justify-content: space-between;
-      width: 13%;
       button {
       }
       b {
@@ -101,13 +101,13 @@
         font-size: 22px;
         font-weight: 700;
         letter-spacing: 0.01em;
+        padding: 0 10px;
       }
     }
     &-remove {
       align-items: center;
       display: flex;
       justify-content: flex-end;
-      width: 4%;
     }
   }
   &__bottom {
@@ -115,9 +115,6 @@
     &-details {
       display: flex;
       justify-content: space-between;
-      &_price {
-        color: #9d84cc;
-      }
       span {
         font-size: 22px;
       }
@@ -126,46 +123,80 @@
       display: flex;
       justify-content: space-between;
       margin-top: 40px;
-      a {
-        display: flex;
-        align-items: center;
-        border: 1px solid #ddd;
-        justify-content: center;
-        width: 210px;
+    }
+  }
+}
 
-        border-radius: 30px;
-        cursor: pointer;
-        min-width: 100px;
-        padding: 0px 20px;
-        text-align: center;
-        svg {
-          margin-right: 12px;
-        }
-      }
-      span {
-        color: #c3c3c3;
-        font-weight: 500;
-        font-weight: 600;
+.button-back {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  justify-content: center;
+  width: 210px;
+  border-radius: 30px;
+  cursor: pointer;
+  min-width: 100px;
+  padding: 0px 20px;
+  text-align: center;
+  svg {
+    margin-right: 12px;
+  }
+  span {
+    color: #c3c3c3;
+    font-weight: 500;
+    font-weight: 600;
+  }
+  &:hover {
+    background-color: black;
+    transition: all 0.15s ease-in-out;
+    span {
+      color: white;
+    }
+    svg {
+      path {
+        stroke: white;
       }
     }
   }
 }
 
 .button-circle {
+  font-size: 20px;
+  font-weight: 700;
   color: #9d84cc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
   height: 32px;
   min-width: 32px;
   border-width: 2px;
-  padding: 0;
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #9d84cc;
   border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  &:hover {
+    background-color: #9d84cc;
+    color: white;
+    transition: all 0.15s ease-in-out;
+  }
 }
+
+.button-plus {
+}
+.button-minus {
+}
+
+.button-remove {
+  border-color: #ddd;
+  color: #ddd;
+  &:hover {
+    background-color: black;
+    color: white;
+    border-color: black;
+    transition: all 0.15s ease-in-out;
+  }
+}
+
 .pay-btn {
   font-size: 16px;
   font-weight: 600;
@@ -179,6 +210,10 @@
   min-width: 100px;
   text-align: center;
   justify-content: center;
+  &:hover {
+    background-color: #9375cb;
+    transition: all 0.15s ease-in-out;
+  }
   span {
     color: #fff;
   }

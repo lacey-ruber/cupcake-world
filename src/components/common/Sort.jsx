@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import '../../scss/components/_sort.scss'
 
@@ -47,6 +48,11 @@ const Sort = ({ onSort, selectedSort }) => {
       </div>
     </div>
   )
+}
+
+Sort.propTypes = {
+  onSort: PropTypes.func,
+  selectedSort: PropTypes.object,
 }
 
 export default Sort

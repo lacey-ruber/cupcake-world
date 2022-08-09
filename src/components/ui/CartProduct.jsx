@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import {
   addProduct,
@@ -32,18 +33,17 @@ const CartProduct = ({ id, title, price, count }) => {
       </div>
       <div className='cart__item-info'>
         <h3>{title}</h3>
-        <p>самый сладкий</p>
       </div>
       <div className='cart__item-count'>
         <button
           onClick={handleClickMinus}
-          className='button-circle'
+          className='button-circle button-minus'
           disabled=''
         >
           -
         </button>
         <b>{count}</b>
-        <button onClick={handleClickPlus} className='button-circle'>
+        <button onClick={handleClickPlus} className='button-circle button-plus'>
           +
         </button>
       </div>
@@ -51,12 +51,22 @@ const CartProduct = ({ id, title, price, count }) => {
         <b>{price * count} ₽</b>
       </div>
       <div className='cart__item-remove'>
-        <div onClick={handleClickRemove} className='button-circle'>
+        <button
+          onClick={handleClickRemove}
+          className='button-circle button-remove'
+        >
           x
-        </div>
+        </button>
       </div>
     </li>
   )
+}
+
+CartProduct.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  count: PropTypes.number,
 }
 
 export default CartProduct

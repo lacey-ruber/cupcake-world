@@ -2,7 +2,11 @@ import React from 'react'
 import CupcakesListPage from '../components/page/CupcakesListPage'
 
 const Catalog = () => {
-  return <CupcakesListPage />
+  return (
+    <>
+      <CupcakesListPage />
+    </>
+  )
 }
 
 export default Catalog

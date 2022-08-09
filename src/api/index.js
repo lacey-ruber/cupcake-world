@@ -3,7 +3,7 @@ import categories from './fake.api/categories.api'
 
 const API = {
   cupcakes,
-  categories,
+  categories
 }
 
 export default API

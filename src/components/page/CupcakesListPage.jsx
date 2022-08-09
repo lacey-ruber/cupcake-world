@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import _ from 'lodash'
 import api from '../../api'
 import CupcakeCard from '../ui/CupcakeCard'
@@ -17,20 +18,16 @@ import {
   setSelectedCategories,
   setCurrentPage,
 } from '../../store/slices/filterSlice'
-// import axios from 'axios'
 
 const CupcakesListPage = () => {
   const dispatch = useDispatch()
-  const { searchQuery, sortBy, selectedCategories, currentPage } = useSelector(
-    (state) => state.filter
-  )
 
   const [cupcakes, setCupcakes] = useState()
   const [categories, setCategories] = useState()
-
-  // axios.get('').then(response => {
-  //   setCupcakes(response.data)
-  // })
+  const { searchQuery, sortBy, selectedCategories, currentPage } = useSelector(
+    (state) => state.filter
+  )
+  const pageSize = 6
 
   useEffect(() => {
     api.cupcakes.fetchAll().then((data) => setCupcakes(data))
@@ -59,33 +56,33 @@ const CupcakesListPage = () => {
     dispatch(setSortBy(item))
   }
 
-  const pageSize = 6
-  const filteredCupcakes = searchQuery
-    ? cupcakes.filter(
-        (cupcake) =>
-          cupcake.title.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1
-      )
-    : selectedCategories
-    ? cupcakes.filter(
-        (cupcake) =>
-          JSON.stringify(cupcake.category) ===
-          JSON.stringify(selectedCategories)
-      )
-    : cupcakes
-  const count = cupcakes ? filteredCupcakes.length : undefined
-  const sortedCupcakes = _.orderBy(
-    filteredCupcakes,
-    [sortBy.path],
-    [sortBy.order]
-  )
-  const cupcakeCrop = paginate(sortedCupcakes, currentPage, pageSize)
-
-  const clearFilter = () => {
-    if (searchQuery !== '') dispatch(setSearchQuery(''))
-    dispatch(setSelectedCategories())
-  }
-
   if (cupcakes) {
+    const filteredCupcakes = searchQuery
+      ? cupcakes.filter(
+          (cupcake) =>
+            cupcake.title.toLowerCase().indexOf(searchQuery.toLowerCase()) !==
+            -1
+        )
+      : selectedCategories
+      ? cupcakes.filter(
+          (cupcake) =>
+            JSON.stringify(cupcake.category) ===
+            JSON.stringify(selectedCategories)
+        )
+      : cupcakes
+    const count = cupcakes ? filteredCupcakes.length : undefined
+    const sortedCupcakes = _.orderBy(
+      filteredCupcakes,
+      [sortBy.path],
+      [sortBy.order]
+    )
+    const cupcakeCrop = paginate(sortedCupcakes, currentPage, pageSize)
+
+    const clearFilter = () => {
+      if (searchQuery !== '') dispatch(setSearchQuery(''))
+      dispatch(setSelectedCategories())
+    }
+
     return (
       <section className='goods'>
         <Search onSearch={handleSearchQuery} value={searchQuery} />
@@ -109,6 +106,7 @@ const CupcakesListPage = () => {
         <div className='goods__wrapper'>
           {cupcakeCrop.map((cupcake) => (
             <CupcakeCard
+              key={cupcake._id}
               id={cupcake._id}
               title={cupcake.title}
               price={cupcake.price}
@@ -123,9 +121,12 @@ const CupcakesListPage = () => {
         />
       </section>
     )
-  } else {
-    return <h2>Загрузка</h2>
   }
+  return <h2>Загрузка...</h2>
+}
+
+CupcakesListPage.propTypes = {
+  cupcakes: PropTypes.array,
 }
 
 export default CupcakesListPage

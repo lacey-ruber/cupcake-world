@@ -9,14 +9,14 @@ const LogOut = () => {
     email: '',
     password: '',
     name: '',
-    licence: false,
+    licence: false
   })
   const [errors, setErrors] = useState({})
 
   const handleChange = (target) => {
     setData((prevState) => ({
       ...prevState,
-      [target.name]: target.value,
+      [target.name]: target.value
     }))
   }
 
@@ -24,31 +24,31 @@ const LogOut = () => {
     email: {
       isRequired: { message: 'Электронная почта обязательна для заполнения' },
       isEmail: {
-        message: 'Email введён некорректно',
-      },
+        message: 'Email введён некорректно'
+      }
     },
     password: {
       isRequired: { message: 'Пароль обязателен для заполнения' },
       isCapitalSymbol: {
-        message: 'Пароль должен содержать хотя бы одну заглавную букву',
+        message: 'Пароль должен содержать хотя бы одну заглавную букву'
       },
       isContainDigit: {
-        message: 'Пароль должен содержать хотя бы одно число',
+        message: 'Пароль должен содержать хотя бы одно число'
       },
       min: {
         message: 'Пароль должен состоять минимум из 8 символов',
-        value: 8,
-      },
+        value: 8
+      }
     },
     name: {
-      isRequired: { message: 'Имя обязательно для заполнения' },
+      isRequired: { message: 'Имя обязательно для заполнения' }
     },
     licence: {
       isRequired: {
         message:
-          'Вы не можете зарегистрироваться без подтверждения лицензионного соглашения',
-      },
-    },
+          'Вы не можете зарегистрироваться без подтверждения лицензионного соглашения'
+      }
+    }
   }
 
   const validate = () => {
@@ -71,28 +71,28 @@ const LogOut = () => {
   }
 
   return (
-    <div className='forms'>
-      <div className='forms__wrapper'>
-        <h1 className='forms__title'>Зарегистрироваться</h1>
-        <form onSubmit={handleSubmit} className='forms__form'>
+    <div className="forms">
+      <div className="forms__wrapper">
+        <h1 className="forms__title">Зарегистрироваться</h1>
+        <form onSubmit={handleSubmit} className="forms__form">
           <TextField
-            label='Электронная почта'
-            name='email'
+            label="Электронная почта"
+            name="email"
             value={data.email}
             onChange={handleChange}
             error={errors.email}
           />
           <TextField
-            label='Имя'
-            name='name'
+            label="Имя"
+            name="name"
             value={data.name}
             onChange={handleChange}
             error={errors.name}
           />
           <TextField
-            label='Пароль'
-            type='password'
-            name='password'
+            label="Пароль"
+            type="password"
+            name="password"
             value={data.password}
             onChange={handleChange}
             error={errors.password}
@@ -100,7 +100,7 @@ const LogOut = () => {
           <CheckBoxField
             value={data.licence}
             onChange={handleChange}
-            name='licence'
+            name="licence"
             error={errors.licence}
           >
             Я принимаю условия
@@ -108,7 +108,7 @@ const LogOut = () => {
               style={{
                 cursor: 'pointer',
                 textDecoration: 'underline',
-                marginLeft: '5px',
+                marginLeft: '5px'
               }}
             >
               пользовательского соглашения
@@ -116,15 +116,15 @@ const LogOut = () => {
           </CheckBoxField>
           <button
             className={'forms__item-btn' + (isValid ? ' active' : '')}
-            type='submit'
+            type="submit"
             disabled={!isValid}
           >
             Зарегистрироваться
           </button>
         </form>
-        <p className='forms__text-help'>
+        <p className="forms__text-help">
           У вас уже есть аккаунт?
-          <Link to='/login' role='button'>
+          <Link to="/login" role="button">
             Войти
           </Link>
         </p>

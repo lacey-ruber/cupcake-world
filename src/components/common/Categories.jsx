@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import '../../scss/components/_categories.scss'
 
 const Categories = ({
@@ -41,6 +42,14 @@ const Categories = ({
 Categories.defaultProps = {
   valueProperty: '_id',
   contentProperty: 'name',
+}
+
+Categories.propTypes = {
+  items: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  selectedItem: PropTypes.object,
+  onItemSelect: PropTypes.func,
+  valueProperty: PropTypes.string.isRequired,
+  contentProperty: PropTypes.string.isRequired,
 }
 
 export default Categories

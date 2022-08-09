@@ -12,7 +12,7 @@ const LoginForm = () => {
   const handleChange = (target) => {
     setData((prevState) => ({
       ...prevState,
-      [target.name]: target.value,
+      [target.name]: target.value
     }))
   }
 
@@ -20,22 +20,22 @@ const LoginForm = () => {
     email: {
       isRequired: { message: 'Электронная почта обязательна для заполнения' },
       isEmail: {
-        message: 'Email введён некорректно',
-      },
+        message: 'Email введён некорректно'
+      }
     },
     password: {
       isRequired: { message: 'Пароль обязателен для заполнения' },
       isCapitalSymbol: {
-        message: 'Пароль должен содержать хотя бы одну заглавную букву',
+        message: 'Пароль должен содержать хотя бы одну заглавную букву'
       },
       isContainDigit: {
-        message: 'Пароль должен содержать хотя бы одно число',
+        message: 'Пароль должен содержать хотя бы одно число'
       },
       min: {
         message: 'Пароль должен состоять минимум из 8 символов',
-        value: 8,
-      },
-    },
+        value: 8
+      }
+    }
   }
 
   const validate = () => {
@@ -58,21 +58,21 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='forms'>
-      <div className='forms__wrapper'>
-        <h1 className='forms__title'>Войти в систему</h1>
-        <form onSubmit={handleSubmit} className='forms__form'>
+    <div className="forms">
+      <div className="forms__wrapper">
+        <h1 className="forms__title">Войти в систему</h1>
+        <form onSubmit={handleSubmit} className="forms__form">
           <TextField
-            label='Электронная почта'
-            name='email'
+            label="Электронная почта"
+            name="email"
             value={data.email}
             onChange={handleChange}
             error={errors.email}
           />
           <TextField
-            label='Пароль'
-            type='password'
-            name='password'
+            label="Пароль"
+            type="password"
+            name="password"
             value={data.password}
             onChange={handleChange}
             error={errors.password}
@@ -80,21 +80,21 @@ const LoginForm = () => {
           <CheckBoxField
             value={data.stayOn}
             onChange={handleChange}
-            name='stayOn'
+            name="stayOn"
           >
             Оставаться в системе
           </CheckBoxField>
           <button
             className={'forms__item-btn' + (isValid ? ' active' : '')}
-            type='submit'
+            type="submit"
             disabled={!isValid}
           >
             Войти
           </button>
         </form>
-        <p className='forms__text-help'>
+        <p className="forms__text-help">
           У вас нет аккаунта?
-          <Link to='/logout' role='button'>
+          <Link to="/logout" role="button">
             Зарегистрироваться
           </Link>
         </p>
