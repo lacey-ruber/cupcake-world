@@ -7,6 +7,9 @@ import { useSelector } from 'react-redux'
 const NavBar = () => {
   const { pathname } = useLocation()
   const { goods } = useSelector((state) => state.cart)
+
+  const totalCount = goods.reduce((sum, product) => sum + product.count, 0)
+
   return (
     <header className='header'>
       <div className='header__wrapper wrapper'>
@@ -43,7 +46,7 @@ const NavBar = () => {
                   <rect x='0.5' y='5.18457' width='14' height='12.8839'></rect>
                 </svg>
               </div>
-              <div className='header-cart-circle'>{goods.length}</div>
+              <div className='header-cart-circle'>{totalCount}</div>
             </Link>
           )}
         </div>

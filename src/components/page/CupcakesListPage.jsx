@@ -106,7 +106,15 @@ const CupcakesListPage = () => {
             )}
           </div>
         </div>
-        {cupcakes && <CupcakeCard cupcakeCrop={cupcakeCrop} />}
+        <div className='goods__wrapper'>
+          {cupcakeCrop.map((cupcake) => (
+            <CupcakeCard
+              id={cupcake._id}
+              title={cupcake.title}
+              price={cupcake.price}
+            />
+          ))}
+        </div>
         <Pagination
           itemsCount={count}
           pageSize={pageSize}

@@ -1,14 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 import '../scss/components/_cart.scss'
+import CartProduct from '../components/ui/CartProduct'
+import CartEmptyPage from '../components/page/CartEmptyPage'
+import { clearGoods } from '../store/slices/cartSlice'
 
 const Cart = () => {
+  const dispatch = useDispatch()
+  const { totalPrice, goods } = useSelector((state) => state.cart)
+
+  const totalCount = goods.reduce((sum, product) => sum + product.count, 0)
+
+  const handleClickClear = () => {
+    if (window.confirm('Очистить корзину?')) {
+      dispatch(clearGoods())
+    }
+  }
+
+  if (!totalPrice) {
+    return <CartEmptyPage />
+  }
   return (
     <div className='cart'>
       <div className='cart__wrapper wrapper'>
         <div className='cart__top'>
-          <h2 className='cart__title'>Корзина</h2>
+          <h2 className='cart__title'>Корзина ({totalCount})</h2>
           <div className='cart__clear'>
             <svg width='20' height='20' viewBox='0 0 20 20' fill='none'>
               <path
@@ -40,40 +58,19 @@ const Cart = () => {
                 strokeLinejoin='round'
               ></path>
             </svg>
-            <span>Очистить всё</span>
+            <span onClick={handleClickClear}>Очистить всё</span>
           </div>
         </div>
         <ul className='cart__items'>
-          <li className='cart__item'>
-            <div className='cart__item-img'>
-              <img alt='Cupcake' />
-            </div>
-            <div className='cart__item-info'>
-              <h3>Барсик</h3>
-              <p>самый сладкий</p>
-            </div>
-            <div className='cart__item-count'>
-              <button className='button-circle' disabled=''>
-                -
-              </button>
-              <b>1</b>
-              <button className='button-circle'>+</button>
-            </div>
-            <div className='cart__item-price'>
-              <b>450 ₽</b>
-            </div>
-            <div className='cart__item-remove'>
-              <div className='button-circle'>x</div>
-            </div>
-          </li>
+          {goods.map((product) => (
+            <CartProduct key={product.id} {...product} />
+          ))}
         </ul>
         <div className='cart__bottom'>
           <div className='cart__bottom-details'>
             <span>
-              Всего кексов: <b>6 шт.</b>
-            </span>
-            <span>
-              Итого: <b className='cart__bottom-details_price'>2725 ₽</b>
+              Итого:{' '}
+              <b className='cart__bottom-details_price'>{totalPrice} ₽</b>
             </span>
           </div>
           <div className='cart__bottom-buttons'>
