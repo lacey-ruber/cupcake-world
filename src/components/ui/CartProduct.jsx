@@ -7,7 +7,7 @@ import {
   removeProduct,
 } from '../../store/slices/cartSlice'
 
-const CartProduct = ({ id, title, price, count }) => {
+const CartProduct = ({ id, title, price, count, image }) => {
   const dispatch = useDispatch()
 
   const handleClickPlus = () => {
@@ -29,7 +29,7 @@ const CartProduct = ({ id, title, price, count }) => {
   return (
     <li className='cart__item'>
       <div className='cart__item-img'>
-        <img alt='Cupcake' />
+        <img src={image} alt='Cupcake' />
       </div>
       <div className='cart__item-info'>
         <h3>{title}</h3>
@@ -38,7 +38,7 @@ const CartProduct = ({ id, title, price, count }) => {
         <button
           onClick={handleClickMinus}
           className='button-circle button-minus'
-          disabled=''
+          disabled={count === 1}
         >
           -
         </button>
@@ -66,6 +66,7 @@ CartProduct.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
+  image: PropTypes.string.isRequired,
   count: PropTypes.number,
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../../assets/img/cupcake-logo.png'
+import logo from '../../logo.png'
 import '../../scss/components/_header.scss'
 import { useSelector } from 'react-redux'
 
@@ -27,7 +27,6 @@ const NavBar = () => {
             </Link>
             <p></p>
           </div>
-          {/* <Search /> */}
         </div>
         <div className="header__controls header__controls-right">
           <Link to="login" className="header-auth-button">

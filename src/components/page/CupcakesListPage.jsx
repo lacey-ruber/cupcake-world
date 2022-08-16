@@ -104,12 +104,13 @@ const CupcakesListPage = () => {
           </div>
         </div>
         <div className='goods__wrapper'>
-          {cupcakeCrop.map((cupcake) => (
+          {cupcakeCrop && cupcakeCrop.map((cupcake) => (
             <CupcakeCard
               key={cupcake._id}
               id={cupcake._id}
               title={cupcake.title}
               price={cupcake.price}
+              image={cupcake.icon}
             />
           ))}
         </div>
