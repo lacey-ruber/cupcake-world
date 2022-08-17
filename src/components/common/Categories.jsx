@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import '../../scss/components/_categories.scss'
+import '../../scss/components/_filters.scss'
 
 const Categories = ({
   items,

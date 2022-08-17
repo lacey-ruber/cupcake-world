@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../../scss/components/_cart-empty.scss'
+import '../../scss/components/_cart.scss'
 
 
 const CartEmptyPage = () => {

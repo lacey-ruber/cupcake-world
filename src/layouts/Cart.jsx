@@ -24,7 +24,7 @@ const Cart = () => {
   }
   return (
     <div className='cart'>
-      <div className='cart__wrapper wrapper'>
+      <div className='cart__wrapper'>
         <div className='cart__top'>
           <h2 className='cart__title'>Корзина ({totalCount})</h2>
           <div className='cart__clear'>

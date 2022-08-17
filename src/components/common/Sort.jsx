@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import '../../scss/components/_sort.scss'
+import '../../scss/components/_filters.scss'
 
 const Sort = ({ onSort, selectedSort }) => {
   const items = {

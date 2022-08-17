@@ -1,7 +1,15 @@
 .cart {
   width: 60%;
   margin-top: 50px;
-  padding: 0 25px;
+  @media (max-width: 1062px) {
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 576px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
   &__wrapper {
     display: flex;
     flex-direction: column;
@@ -9,6 +17,7 @@
   }
   &__top {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
   }
@@ -17,6 +26,10 @@
     align-items: center;
     font-size: 32px;
     margin: 20px 0;
+    @media (max-width: 576px) {
+      font-size: 24px;
+      margin: 0;
+    }
   }
   &__clear {
     display: flex;
@@ -56,7 +69,6 @@
       display: flex;
       align-items: center;
       margin-right: 15px;
-      width: 10%;
       img {
         height: 80px;
         width: 80px;
@@ -73,6 +85,9 @@
         letter-spacing: 0.01em;
         line-height: 37px;
         padding: 0 8px;
+        @media (max-width: 576px) {
+          font-size: 14px;
+        }
       }
       p {
         color: #8d8d8d;
@@ -88,6 +103,9 @@
       b {
         padding: 0 10px;
         font-size: 22px;
+        @media (max-width: 576px) {
+          font-size: 16px;
+        }
       }
     }
     &-price {
@@ -100,6 +118,10 @@
         font-weight: 700;
         letter-spacing: 0.01em;
         padding: 0 10px;
+        white-space: nowrap;
+        @media (max-width: 576px) {
+          font-size: 16px;
+        }
       }
     }
     &-remove {
@@ -110,17 +132,28 @@
   }
   &__bottom {
     margin: 50px 0;
+    @media (max-width: 576px) {
+      margin: 20px 0;
+    }
     &-details {
       display: flex;
       justify-content: space-between;
       span {
         font-size: 22px;
+        @media (max-width: 576px) {
+          font-size: 18px;
+        }
       }
     }
     &-buttons {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       margin-top: 40px;
+      @media (max-width: 576px) {
+        margin-top: 15px;
+        flex-direction: column-reverse;
+      }
     }
   }
 }
@@ -130,11 +163,10 @@
   align-items: center;
   border: 1px solid #ddd;
   justify-content: center;
-  width: 210px;
   border-radius: 30px;
   cursor: pointer;
   min-width: 100px;
-  padding: 0px 20px;
+  padding: 15px 20px;
   text-align: center;
   svg {
     margin-right: 12px;
@@ -155,6 +187,10 @@
         stroke: white;
       }
     }
+  }
+  @media (max-width: 576px) {
+    padding: 10px 15px;
+    width: 100%;
   }
 }
 
@@ -177,10 +213,13 @@
     color: white;
     transition: all 0.15s ease-in-out;
   }
+  @media (max-width: 576px) {
+    font-size: 16px;
+    height: 26px;
+    min-width: 26px;
+  }
 }
 
-.button-plus {
-}
 .button-minus {
   &:disabled {
     opacity: 0.4;
@@ -201,8 +240,7 @@
 .pay-btn {
   font-size: 16px;
   font-weight: 600;
-  padding: 16px;
-  width: 210px;
+  padding: 16px 40px;
   background-color: #9d84cc;
   border: 1px solid transparent;
   border-radius: 30px;
@@ -210,6 +248,7 @@
   display: flex;
   min-width: 100px;
   text-align: center;
+  align-items: center;
   justify-content: center;
   &:hover {
     background-color: #9375cb;
@@ -217,5 +256,50 @@
   }
   span {
     color: #fff;
+  }
+  @media (max-width: 576px) {
+    padding: 10px 15px;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+}
+
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+align-items: center;
+text-align: center;
+height: 100vh;
+overflow: hidden;
+margin-top: -5%;
+  h1 {
+    @media (max-width: 576px) {
+      font-size: 26px;
+    }
+  }
+  p {
+      margin-top: 5px;
+  }
+  a {
+      margin-top: 60px;
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      justify-content: center;
+      width: 210px;
+      border-radius: 30px;
+      cursor: pointer;
+      min-width: 100px;
+      padding: 20px 20px;
+      text-align: center;
+&:hover {
+  background-color: black;
+  transition: all 0.15s ease-in-out;
+    color: white;
+}
+@media (max-width: 576px) {
+  margin-top: 20px;
+}
   }
 }
